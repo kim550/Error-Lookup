@@ -37,23 +37,21 @@ def search():
         try:
             errtext = ctypes.FormatError(int(text))
         except OverflowError:
-            messagebox.showerror('错误', '输入数字过大')
+            messagebox.showerror('Error', 'Too large number.')
             window.focus_set()
             return
         except ValueError:
-            messagebox.showerror('错误', '非法输入')
+            messagebox.showerror('Error', 'Invalid input.')
             window.focus_set()
             return
         if errtext == '<no description>':
-            messagebox.showerror('错误', '输入的错误编码无效')
+            messagebox.showerror('Error', 'Invalid error code.')
             window.focus_set()
             return
         err['state'] = 'normal'
         err.delete('0.0', 'end')
         err.insert('end', errtext)
         err['state'] = 'disabled'
-    else:
-        messagebox.showerror('错误', '没有输入')
 
 def btnenter(event):
     global entered
